@@ -81,8 +81,7 @@ export function AddressInput({ onImport }: AddressInputProps) {
   return (
     <div className="space-y-5">
       <p>
-        ひな形と同じ列のCSVファイルか、Excelの表を使えます。
-        列名がひな形と違っていても、取り込むときに対応を選べます。
+        ひな形と同じ列のCSVファイルか、Excelの表を使えます。列名がひな形と違っていても、取り込むときに対応を選べます。
       </p>
       <a
         href={`${import.meta.env.BASE_URL}template.csv`}
