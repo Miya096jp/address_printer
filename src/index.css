@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-vermilion: #c8352e;
+  --color-vermilion-dark: #a52a24;
+  --color-ink: #2b2b2b;
+  --color-paper: #faf6ef;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+}
