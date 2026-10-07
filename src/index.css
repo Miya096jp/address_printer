@@ -3,11 +3,64 @@
 @theme {
   --color-vermilion: #c8352e;
   --color-vermilion-dark: #a52a24;
+  --color-vermilion-light: #fbeceb;
   --color-ink: #2b2b2b;
+  --color-ink-muted: #5c5650;
   --color-paper: #faf6ef;
+  --color-paper-line: #e8dfd0;
+  --font-sans: 'Noto Sans JP', system-ui, sans-serif;
+  --font-serif: 'Noto Serif JP', serif;
 }
 
-body {
-  background-color: var(--color-paper);
-  color: var(--color-ink);
+@layer base {
+  html {
+    /* 年配の方にも読みやすいよう、本文を少し大きめにする */
+    font-size: 17px;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.7;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-vermilion);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  /* 切手の縁のようなミシン目。カードの区切りに控えめに使う */
+  .perforation {
+    height: 8px;
+    background-image: radial-gradient(circle, var(--color-paper) 3px, transparent 3.5px);
+    background-size: 12px 8px;
+    background-position: center;
+    background-color: var(--color-paper-line);
+  }
+
+  /* はがきの罫線のような薄い横線 */
+  .postcard-lines {
+    background-image: repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent calc(1.7em - 1px),
+      var(--color-paper-line) calc(1.7em - 1px),
+      var(--color-paper-line) 1.7em
+    );
+  }
+
+  .button-primary {
+    @apply bg-vermilion hover:bg-vermilion-dark inline-flex items-center justify-center gap-2 rounded-md px-5 py-2.5 font-bold text-white shadow-sm transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .button-secondary {
+    @apply border-vermilion text-vermilion hover:bg-vermilion-light inline-flex items-center justify-center gap-2 rounded-md border-2 bg-white px-4 py-2 font-bold transition-colors disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .text-input {
+    @apply border-ink-muted/40 text-ink w-full rounded-md border bg-white px-3 py-2;
+  }
 }
