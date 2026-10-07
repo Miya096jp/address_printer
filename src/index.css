@@ -64,3 +64,20 @@
     @apply border-ink-muted/40 text-ink w-full rounded-md border bg-white px-3 py-2;
   }
 }
+
+/* 印刷時は、用紙のプレビューだけをA4に原寸で出す */
+@page {
+  size: A4;
+  margin: 0;
+}
+
+@media print {
+  html,
+  body {
+    background: white;
+  }
+
+  .sheet-page:not(:last-child) {
+    break-after: page;
+  }
+}
