@@ -1,0 +1,15 @@
+version: 2
+updates:
+  # 依存ライブラリの脆弱性の修正を、早めに取り込めるようにする
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      # 開発用のツールは、まとめて1つのPRにする
+      development-dependencies:
+        dependency-type: development
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
